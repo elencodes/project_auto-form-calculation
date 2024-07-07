@@ -1,0 +1,142 @@
+@import "normalize.scss";
+
+
+// Fonts
+@font-face {
+	font-family: 'Poppins';
+	src: url("../fonts/Poppins-SemiBold.woff") format('woff'), url("../fonts/Poppins-SemiBold.woff2") format('woff2');
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: url("../fonts/Poppins-Regular.woff") format('woff'), url("../fonts/Poppins-Regular.woff2") format('woff2');
+	font-weight: 400;
+}
+
+* {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 400;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #93cac42c;
+}
+
+.wrapper {
+	width: 50rem;
+	padding: 1.875rem 2.5rem 2.5rem 2.5rem;
+	border-radius: .625rem;
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(1.25rem);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+	font-size: 1.625rem;
+	font-weight: 600;
+	text-align: center;
+	color: brown;
+}
+
+.input__box {
+	width: 100%;
+	height: 3.125rem;
+	margin: 1.875rem 0;
+}
+
+.input__box input {
+	width: 100%;
+	height: 100%;
+	padding: 1.25rem 2.8125rem 1.25rem 1.25rem;
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	border-radius: 2.5rem;
+	font-size: 1rem;
+	color: #333333;
+}
+
+.input__box input::placeholder {
+	color: #333333;
+}
+
+.input__box select {
+	width: 100%;
+	height: 100%;
+	padding: 0 1.25rem 0 1.25rem;
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	border-radius: 2.5rem;
+	font-size: 1rem;
+}
+
+.input__box option {
+	background-color: #afe2ff89;
+}
+
+.input__box-radio {
+	margin: 1.875rem 0;
+}
+
+.label__flue,
+.label__condition,
+.label__owners,
+.label__payment {
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+}
+
+.input__box-petrol,
+.input__box-diesel,
+.input__box-gas,
+.input__box-electricity,
+.input__box-new,
+.input__box-used,
+.input__box-owner,
+.input__box-owners,
+.input__box-payment {
+	display: inline-block;
+	margin-left: .625rem;
+}
+
+.label__petrol,
+.label__diesel,
+.label__gas,
+.label__electricity,
+.label__new,
+.label__used,
+.label__owner,
+.label__ownerss,
+.label__сard,
+.label__cash,
+.label__invoice {
+	padding-left: .3125rem;
+}
+
+.label__flue,
+.label__condition,
+.label__owners,
+.label__payment,
+.wrapper .button {
+	width: 100%;
+	height: 2.8125rem;
+	font-size: 1rem;
+	font-weight: 600;
+	background-color: #6ae18f;
+	border-radius: 2.5rem;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	color: #333333;
+}
+
+.label__flue,
+.label__condition,
+.label__owners,
+.label__payment {
+	background-color: #7de2f1;
+}
+
+.wrapper .button {
+	margin-top: 1.875rem;
+}

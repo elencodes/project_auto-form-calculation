@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Калькулятор расчёта стоимости автомобиля</title>
+	<link rel="stylesheet" href="assets/scss/style.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<form id="mainForm" action="#" name="mainForm" novalidate>
+			<h1 class="title">Калькулятор расчёта стоимости автомобиля</h1>
+			<div class="input__box">
+				<select placeholder="Марка автомобиля" name="car" required>
+					<option value="" selected>Марка автомобиля</option>
+					<option value="Reno">Reno</option>
+					<option value="Opel">Opel</option>
+					<option value="Mazda">Mazda</option>
+					<option value="Jaguar">Jaguar</option>
+				</select>
+			</div>
+			<div class="input__box">
+				<select placeholder="Модель" name="model" required>
+					<option value="" selected>Модель</option>
+					<option value="Duster">Duster</option>
+					<option value="Symbol">Symbol</option>
+					<option value="Astra">Astra</option>
+					<option value="Corsa">Corsa</option>
+					<option value="RX8">RX8</option>
+					<option value="6">6</option>
+					<option value="F-Type">F-Type</option>
+					<option value="E-Type">E-Type</option>
+				</select>
+			</div>
+			<div class="input__box-radio">
+				<label class="label__flue">Тип топлива:</label>
+				<input type="radio" class="input__box-petrol" id="flue-petrol" value="petrol" name="nameFlue">
+				<label for="flue-petrol" class="label__petrol">Бензин</label>
+				<input type="radio" class="input__box-diesel" id="flue-diesel" value="diesel" name="nameFlue">
+				<label for="flue-diesel" class="label__diesel">Дизель</label>
+				<input type="radio" class="input__box-gas" id="flue-gas" value="gas" name="nameFlue">
+				<label for="flue-gas" class="label__gas">Газ</label>
+				<input type="radio" class="input__box-electricity" id="flue-electricity" value="electricity"
+					name="nameFlue">
+				<label for="flue-electricity" class="label__electricity">Электричество</label>
+			</div>
+			<div class="input__box input__box-number">
+				<input type="number" placeholder="Объем двигателя" name="engineСapacity" required>
+			</div>
+			<div class="input__box-radio">
+				<label class="label__condition">Состояние автомобиля:</label>
+				<input type="radio" class="input__box-new" id="new-car" value="newСar" name="conditionCar">
+				<label for="new-car" class="label__new">Новый</label>
+				<input type="radio" class="input__box-used" id="used-car" value="usedСar" name="conditionCar">
+				<label for="used-car" class="label__used">Подержанный</label>
+			</div>
+			<div class="input__box-radio">
+				<label class="label__owners">Количество владельцев:</label>
+				<input type="radio" class="input__box-owner" id="one-owner" value="carOwner" name="carOwners">
+				<label for="one-owner" class="label__owner">1-2 владельца</label>
+				<input type="radio" class="input__box-owners" id="three-owners" value="carOwners" name="carOwners">
+				<label for="three-owners" class="label__ownerss">более 3-х владельцев</label>
+			</div>
+			<div class="input__box-radio">
+				<label class="label__payment">Cпособ оплаты:</label>
+				<input type="radio" class="input__box-payment" id="payment-сard" value="paymentСard" name="paymentMethod">
+				<label for="payment-сard" class="label__сard">Картой</label>
+				<input type="radio" class="input__box-payment" id="payment-сash" value="paymentСash" name="paymentMethod">
+				<label for="payment-сash" class="label__cash">Наличными</label>
+				<input type="radio" class="input__box-payment" id="payment-invoice" value="paymentInvoice"
+					name="paymentMethod">
+				<label for="payment-invoice" class="label__invoice">Cчет на юридическое лицо</label>
+			</div>
+			<button type="submit" class="button">Рассчитать</button>
+		</form>
+		<div class="result"></div>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+
+</html>
