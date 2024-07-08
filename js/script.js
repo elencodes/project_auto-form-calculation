@@ -1,4 +1,4 @@
-//1 Ищем объекты формы в HTML документе для дальнейшего взаимодействия.
+//Ищем объекты формы в HTML документе для дальнейшего взаимодействия
 const mainForm = document.forms.mainForm;
 const selectBrand = mainForm.brandCar;
 const selectModel = mainForm.modelCar;
@@ -19,9 +19,11 @@ const inputRadioPaymentCash = document.querySelector(`#payment-cash`);
 const inputRadioPaymentInvoice = document.querySelector(`#payment-invoice`);
 const submitButton = mainForm.querySelector('button[type="submit"]');
 
+//Ищем объекты формы в HTML документе для вывода сообщений об ошибках в дальнейшем взаимодействия.
 const errorBrand = document.querySelector(`.error__brand`);
 const errorEngineCapacity = document.querySelector(`.error__engine-capacity`);
 
+// Ищем объекты формы в HTML документе для изменения стилей при дальнейшем взаимодействии.
 const selectBrandClass = document.querySelector(`.input__box-brand`);
 const selectModelClass = document.querySelector(`.input__box-model`);
 const selectColorClass = document.querySelector(`.input__box-color`);
@@ -32,7 +34,7 @@ const inputOwnersClass = document.querySelector(`.input__box-radio--owners`);
 const inputPaymentClass = document.querySelector(`.input__box-radio-payment`);
 
 
-//5 Корректировка выпадающего списка моделей авто при выборе определенной марки
+// Корректировка выпадающего списка моделей авто при выборе определенной марки
 selectBrand.addEventListener(`change`, function (event) {
 	if (selectBrand.value === `Renault`) {
 		selectModel.innerHTML =
@@ -74,7 +76,7 @@ selectBrand.addEventListener(`change`, function (event) {
 });
 
 
-//4 Если выбран подержанный автомобиль,
+// Если выбран подержанный автомобиль,
 //появляется выбор количества владельцев: 1-2 владельца, более 3-х владельцев
 inputRadioConditionUsed.addEventListener(`change`, function (event) {
 	if (inputRadioConditionUsed.checked) {
@@ -82,7 +84,7 @@ inputRadioConditionUsed.addEventListener(`change`, function (event) {
 	}
 });
 
-//5 Если выбран новый автомобиль,
+// Если выбран новый автомобиль,
 //пункт выбора количества владельцев скрывается
 inputRadioConditionNew.addEventListener(`change`, function (event) {
 	if (inputRadioConditionNew.checked) {
@@ -93,9 +95,9 @@ inputRadioConditionNew.addEventListener(`change`, function (event) {
 });
 
 
-//6 Расширенная валидация профессии пользователя (функция еще не вызывается)
+// Расширенная валидация марки автомобиля (функция еще не вызывается)
 function checkFormValidityBrand() {
-	//(если поле пустое (профессия не выбрана) - появляются сообщения об ошибке)
+	//(если поле пустое (марка не выбрана) - поля блокируются и появляется сообщения об ошибке)
 	if (selectBrand.value === "") {
 		selectModel.disabled = true;
 		selectColor.disabled = true;
@@ -114,7 +116,7 @@ function checkFormValidityBrand() {
 		selectBrandClass.classList.add('error');
 		selectBrandClass.style.margin = "1.875rem 0 1rem 0";
 	} else {
-		//(если профессия выбрана - сообщения об ошибке исчезают)
+		//(если марка выбрана - сообщения об ошибке исчезают и часть полей будет разблокирована)
 		selectModel.disabled = false;
 		selectColor.disabled = false;
 		inputRadioFluePetrol.disabled = false;
@@ -140,7 +142,7 @@ function checkFormValidityBrand() {
 	}
 }
 
-//5 Корректировка выпадающего списка моделей авто при выборе определенной марки и модели
+// Корректировка выпадающего списка цвета кузова авто при выборе определенной модели
 selectModel.addEventListener(`change`, function (event) {
 	if (selectModel.value === `Duster`) {
 		selectColor.innerHTML =
@@ -218,7 +220,7 @@ selectModel.addEventListener(`change`, function (event) {
 	}
 });
 
-//9 Расширенная валидация возраста пользователя (функция еще не вызывается)
+// Расширенная валидация объема двигателя (функция еще не вызывается)
 function checkFormValidityEngineCapacity() {
 	//(если поле пустое - появляются сообщения об ошибке)
 	if (inputEngineCapacity.value === "") {
@@ -227,13 +229,13 @@ function checkFormValidityEngineCapacity() {
 		inputEngineCapacityClass.classList.add('error');
 		inputEngineCapacityClass.style.margin = "1.875rem 0 1rem 0";
 	} else if (Number(inputEngineCapacity.value) !== 1.6 && Number(inputEngineCapacity.value) !== 2 && Number(inputEngineCapacity.value) !== 3) {
-		//(если возраст введен некорректно - появляются сообщения об ошибке)
+		//(если объем двигателя введен некорректно - появляются сообщения об ошибке)
 		errorEngineCapacity.textContent = `Введите объем двигателя: 1.6, 2 или 3`;
 		errorEngineCapacity.classList.add('error__message');
 		inputEngineCapacityClass.classList.add('error');
 		inputEngineCapacityClass.style.margin = "1.875rem 0 1rem 0";
 	} else {
-		//(если возраст введен корректно - сообщения об ошибке исчезают)
+		//(если объем двигателя введен корректно - сообщения об ошибке исчезают)
 		errorEngineCapacity.textContent = ``;
 		errorEngineCapacity.classList.remove('error__message');
 		inputEngineCapacityClass.classList.remove('error');
@@ -241,53 +243,55 @@ function checkFormValidityEngineCapacity() {
 	}
 }
 
-//15 Событие focus активируется, когда элемент формы получает фокус
-//очищаем placeholder и добавляем класс focus для поля ввода
+
+//Событие focus активируется, когда элемент формы получает фокус
+//добавляем класс focus для поля ввода
 selectBrand.addEventListener(`focus`, function (event) {
 	selectBrandClass.classList.add('focus');
 });
-//16 Событие blur срабатывает, когда элемент теряет фокус
+//Событие blur срабатывает, когда элемент теряет фокус
 //возврат стилей к исходному состоянию
 selectBrand.addEventListener(`blur`, function (event) {
 	selectBrandClass.classList.remove('focus');
 });
 
-//15 Событие focus активируется, когда элемент формы получает фокус
-//очищаем placeholder и добавляем класс focus для поля ввода
+//Событие focus активируется, когда элемент формы получает фокус
+//добавляем класс focus для поля ввода
 selectModel.addEventListener(`focus`, function (event) {
 	selectModelClass.classList.add('focus');
 });
-//16 Событие blur срабатывает, когда элемент теряет фокус
+//Событие blur срабатывает, когда элемент теряет фокус
 //возврат стилей к исходному состоянию
 selectModel.addEventListener(`blur`, function (event) {
 	selectModelClass.classList.remove('focus');
 });
 
-//15 Событие focus активируется, когда элемент формы получает фокус
-//очищаем placeholder и добавляем класс focus для поля ввода
+// Событие focus активируется, когда элемент формы получает фокус
+//добавляем класс focus для поля ввода
 selectColor.addEventListener(`focus`, function (event) {
 	selectColorClass.classList.add('focus');
 });
-//16 Событие blur срабатывает, когда элемент теряет фокус
+//Событие blur срабатывает, когда элемент теряет фокус
 //возврат стилей к исходному состоянию
 selectColor.addEventListener(`blur`, function (event) {
 	selectColorClass.classList.remove('focus');
 });
 
-//15 Событие focus активируется, когда элемент формы получает фокус
+// Событие focus активируется, когда элемент формы получает фокус
 //очищаем placeholder и добавляем класс focus для поля ввода
 inputEngineCapacity.addEventListener(`focus`, function (event) {
 	inputEngineCapacity.placeholder = "";
 	inputEngineCapacityClass.classList.add('focus');
 });
-//16 Событие blur срабатывает, когда элемент теряет фокус
+// Событие blur срабатывает, когда элемент теряет фокус
 //возврат стилей к исходному состоянию
 inputEngineCapacity.addEventListener(`blur`, function (event) {
 	inputEngineCapacity.placeholder = inputEngineCapacityPlaceholder;
 	inputEngineCapacityClass.classList.remove('focus');
 });
 
-//4 Создаем массив с объектами, который содержит в себе цены для каждой новой модели авто
+
+// Создаем массив с объектами, который содержит в себе цены для каждой новой модели авто
 const carModelPrice = [{
 	model: 'Duster',
 	price: '1868000'
@@ -314,7 +318,8 @@ const carModelPrice = [{
 	price: '12700000'
 }, ];
 
-//4 Создаем массив с объектами, который содержит в себе коэффициенты надбавки за объем двигателя
+
+// Создаем массив с объектами, который содержит в себе коэффициенты надбавки за объем двигателя
 const engineCapacityRate = [{
 	'1.6': 1
 }, {
@@ -323,8 +328,8 @@ const engineCapacityRate = [{
 	'3': 1.8
 }, ]
 
-// Функция расчета стоимости авто
 
+//Функция расчета стоимости конфигурации автомобиля
 const calculateTotalPrice = (model, engineCapacity, conditionNew, conditionUsed) => {
 	model = selectModel.value;
 	engineCapacity = Number(inputEngineCapacity.value);
@@ -351,7 +356,6 @@ const calculateTotalPrice = (model, engineCapacity, conditionNew, conditionUsed)
 		modelPrice = Number(carModelPrice[7].price); //Jaguar F-Pace
 	}
 
-
 	//объем двигателя
 	let engineCapacityPrice;
 	if (engineCapacity === 1.6) {
@@ -362,6 +366,7 @@ const calculateTotalPrice = (model, engineCapacity, conditionNew, conditionUsed)
 		engineCapacityPrice = engineCapacityRate[2][3];
 	}
 
+	//состояние автомобиля
 	const newCarPrice = 1;
 	const usedCarPriceOwner = 0.8;
 	const usedCarPriceOwners = 0.6;
@@ -375,18 +380,19 @@ const calculateTotalPrice = (model, engineCapacity, conditionNew, conditionUsed)
 		conditionPrice = newCarPrice;
 	}
 
+	//формула расчета стоимости автомобиля
 	return modelPrice * engineCapacityPrice * conditionPrice;
 };
 
 
-//31 Проверка на валидность всех введенных данных пользователем
+// Проверка на валидность всех введенных данных пользователем
 //(событие change срабатывает при изменении значения элемента формы)
 mainForm.addEventListener(`change`, function (event) {
 	checkFormValidityBrand();
 	checkFormValidityEngineCapacity();
 	calculateTotalPrice();
 
-	//добавление стилей для кнопки (кнопка станет активной, если нет сообщений об ошибках и галочка стоит на согласии)
+	//добавление стилей для кнопки (кнопка станет активной, если нет сообщений об ошибках и значения полей ввода не пусты / отвечают заданным параметрам)
 	if (document.querySelectorAll('.error__message').length === 0 &&
 		selectModel.value !== "" &&
 		selectColor.value !== "" &&
@@ -398,13 +404,16 @@ mainForm.addEventListener(`change`, function (event) {
 		submitButton.style.backgroundColor = "#6ae18f";
 		submitButton.style.color = "#FFFFFF";
 	} else {
-		//возврат стилей к исходному состоянию (кнопка станет неактивной, если есть сообщения об ошибках и галочка не стоит на согласии)
+		//возврат стилей к исходному состоянию (кнопка станет неактивной, если есть сообщения об ошибках и значения полей ввода не пусты / отвечают заданным параметрам)
 		submitButton.disabled = true;
 		submitButton.style.backgroundColor = "#c7baba6f";
 		submitButton.style.color = "#33333369";
 	}
 });
 
+
+// Повторная на валидность всех введенных данных пользователем
+//(событие submit срабатывает при отправке формы)
 mainForm.addEventListener('submit', function (event) {
 	//предотвращаем перезагрузку страницы и автоматическую отправку данных
 	event.preventDefault();
@@ -433,10 +442,16 @@ mainForm.addEventListener('submit', function (event) {
 			Condition: inputRadioConditionNew.value || inputRadioCarOwner.value || inputRadioCarOwners.value,
 			Payment: inputRadioPaymentCard.value || inputRadioPaymentCash.value || inputRadioPaymentInvoice.value,
 		});
+		//выводим на экран сумму конфигурации автомобиля
+		const price = document.querySelector(`.price`);
+		const format = new Intl.NumberFormat("ru-RU", {
+			style: "currency",
+			currency: "RUB"
+		}).format(calculateTotalPrice(), );
+		price.innerHTML = `
+			<p>Стоимость автомобиля в данной конфигурации составит ${format}</p>`
 		//очищаем форму
 		mainForm.reset();
-		//выводим сообщение для пользователя об успешной регистрации
-		alert(`Поздравляем!`)
 		//возврат стилей кнопки к исходному состоянию
 		submitButton.style.backgroundColor = "#ffffff6f";
 		submitButton.style.color = "#333333";

@@ -131,8 +131,6 @@ body {
 	color: #33333369;
 }
 
-// background-color: #6ae18f;
-
 .label__flue,
 .label__condition,
 .label__owners,
@@ -161,4 +159,19 @@ body {
 .error {
 	border: .0125rem solid rgb(231, 63, 63);
 	border-radius: 2.5rem;
+}
+
+.result {
+	width: 50rem;
+	padding: 1.875rem 2.5rem 2.5rem 2.5rem;
+	font-size: 1.5rem;
+	color: #333333;
+}
+
+.price {
+	padding: 1.875rem 2.5rem 0 2.5rem;
+	font-size: 1.625rem;
+	font-weight: 600;
+	text-align: center;
+	color: brown;
 }
