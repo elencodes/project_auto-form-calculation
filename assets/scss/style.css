@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -310,6 +309,7 @@ body {
   width: 100%;
   height: 100%;
   padding: 0 1.25rem 0 1.25rem;
+  background-color: #ffffff;
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 2.5rem;
   font-size: 1rem;
@@ -352,7 +352,7 @@ body {
 .label__used,
 .label__owner,
 .label__ownerss,
-.label__сard,
+.label__card,
 .label__cash,
 .label__invoice {
   padding-left: 0.3125rem;
@@ -367,10 +367,10 @@ body {
   height: 2.8125rem;
   font-size: 1rem;
   font-weight: 600;
-  background-color: #6ae18f;
+  background-color: rgba(199, 186, 186, 0.4352941176);
   border-radius: 2.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  color: #333333;
+  color: rgba(51, 51, 51, 0.4117647059);
 }
 
 .label__flue,
@@ -378,8 +378,27 @@ body {
 .label__owners,
 .label__payment {
   background-color: #7de2f1;
+  color: #333333;
 }
 
 .wrapper .button {
   margin-top: 1.875rem;
+}
+
+.input__box-radio--owners {
+  display: none;
+}
+
+.focus {
+  border: 0.125rem solid #7de2f1;
+  border-radius: 2.5rem;
+}
+
+.error__message {
+  color: rgb(238, 34, 34);
+}
+
+.error {
+  border: 0.0125rem solid rgb(231, 63, 63);
+  border-radius: 2.5rem;
 }
