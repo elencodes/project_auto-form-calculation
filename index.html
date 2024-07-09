@@ -35,6 +35,7 @@
 					<option value="F-Pace">F-Pace</option>
 				</select>
 			</div>
+			<div class="error__model"></div>
 			<div class="input__box input__box-color">
 				<select placeholder="Цвет кузова" name="colorCar" required>
 					<option value="" selected>Цвет кузова</option>
@@ -48,16 +49,18 @@
 					<option value="Зеленый">Зеленый</option>
 				</select>
 			</div>
+			<div class="error__color"></div>
 			<div class="input__box-radio input__box-radio--flue">
 				<label class="label__flue">Тип топлива:</label>
-				<input type="radio" class="input__box-petrol" id="flue-petrol" value="Бензин" name="nameFlue">
+				<input type="radio" class="input__box-petrol" id="flue-petrol" value="Бензин" name="nameFlue" checked>
 				<label for="flue-petrol" class="label__petrol">Бензин</label>
-				<input type="radio" class="input__box-diesel" id="flue-diesel" value="Дизель" name="nameFlue">
+				<input type="radio" class="input__box-diesel" id="flue-diesel" value="Дизель" name="nameFlue"
+					disabled="disabled">
 				<label for="flue-diesel" class="label__diesel">Дизель</label>
-				<input type="radio" class="input__box-gas" id="flue-gas" value="Газ" name="nameFlue">
+				<input type="radio" class="input__box-gas" id="flue-gas" value="Газ" name="nameFlue" disabled="disabled">
 				<label for="flue-gas" class="label__gas">Газ</label>
 				<input type="radio" class="input__box-electricity" id="flue-electricity" value="Электричество"
-					name="nameFlue">
+					name="nameFlue" disabled="disabled">
 				<label for="flue-electricity" class="label__electricity">Электричество</label>
 			</div>
 			<div class="input__box input__box-engine--capacity">
@@ -71,6 +74,7 @@
 				<input type="radio" class="input__box-used" id="used-car" value="Подержанный" name="conditionCar">
 				<label for="used-car" class="label__used">Подержанный</label>
 			</div>
+			<div class="error__condition"></div>
 			<div class="input__box-radio input__box-radio--owners">
 				<label class="label__owners">Количество владельцев:</label>
 				<input type="radio" class="input__box-owner" id="one-owner" value="1-2 владельца" name="carOwners">
@@ -79,6 +83,7 @@
 					name="carOwners">
 				<label for="three-owners" class="label__ownerss">более 3-х владельцев</label>
 			</div>
+			<div class="error__owners"></div>
 			<div class="input__box-radio input__box-radio-payment">
 				<label class="label__payment">Cпособ оплаты:</label>
 				<input type="radio" class="input__box-payment" id="payment-card" value="Картой" name="paymentMethod">
@@ -89,6 +94,7 @@
 					name="paymentMethod">
 				<label for="payment-invoice" class="label__invoice">Cчет на юридическое лицо</label>
 			</div>
+			<div class="error__payment"></div>
 			<button type="submit" class="button">Рассчитать</button>
 		</form>
 	</div>

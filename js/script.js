@@ -21,7 +21,12 @@ const submitButton = mainForm.querySelector('button[type="submit"]');
 
 //Ищем объекты формы в HTML документе для вывода сообщений об ошибках в дальнейшем взаимодействия.
 const errorBrand = document.querySelector(`.error__brand`);
+const errorModel = document.querySelector(`.error__model`);
+const errorColor = document.querySelector(`.error__color`);
 const errorEngineCapacity = document.querySelector(`.error__engine-capacity`);
+const errorCondition = document.querySelector(`.error__condition`);
+const errorOwners = document.querySelector(`.error__owners`);
+const errorPayment = document.querySelector(`.error__payment`);
 
 // Ищем объекты формы в HTML документе для изменения стилей при дальнейшем взаимодействии.
 const selectBrandClass = document.querySelector(`.input__box-brand`);
@@ -74,73 +79,6 @@ selectBrand.addEventListener(`change`, function (event) {
 				<option value="F-Pace">F-Pace</option>`
 	}
 });
-
-
-// Если выбран подержанный автомобиль,
-//появляется выбор количества владельцев: 1-2 владельца, более 3-х владельцев
-inputRadioConditionUsed.addEventListener(`change`, function (event) {
-	if (inputRadioConditionUsed.checked) {
-		blockOwnersVisible.style.display = 'block';
-	}
-});
-
-// Если выбран новый автомобиль,
-//пункт выбора количества владельцев скрывается
-inputRadioConditionNew.addEventListener(`change`, function (event) {
-	if (inputRadioConditionNew.checked) {
-		inputRadioCarOwner.checked = false;
-		inputRadioCarOwners.checked = false;
-		blockOwnersVisible.style.display = 'none';
-	}
-});
-
-
-// Расширенная валидация марки автомобиля (функция еще не вызывается)
-function checkFormValidityBrand() {
-	//(если поле пустое (марка не выбрана) - поля блокируются и появляется сообщения об ошибке)
-	if (selectBrand.value === "") {
-		selectModel.disabled = true;
-		selectColor.disabled = true;
-		inputRadioFluePetrol.disabled = true;
-		inputRadioFlueDiesel.disabled = true;
-		inputRadioFlueGas.disabled = true;
-		inputRadioFlueElectricity.disabled = true;
-		inputEngineCapacity.disabled = true;
-		inputRadioConditionNew.disabled = true;
-		inputRadioConditionUsed.disabled = true;
-		inputRadioPaymentCard.disabled = true;
-		inputRadioPaymentCash.disabled = true;
-		inputRadioPaymentInvoice.disabled = true;
-		errorBrand.textContent = `Выберите марку автомобиля`;
-		errorBrand.classList.add('error__message');
-		selectBrandClass.classList.add('error');
-		selectBrandClass.style.margin = "1.875rem 0 1rem 0";
-	} else {
-		//(если марка выбрана - сообщения об ошибке исчезают и часть полей будет разблокирована)
-		selectModel.disabled = false;
-		selectColor.disabled = false;
-		inputRadioFluePetrol.disabled = false;
-		inputRadioFlueDiesel.disabled = true;
-		inputRadioFlueGas.disabled = true;
-		inputRadioFlueElectricity.disabled = true;
-		inputEngineCapacity.disabled = false;
-		inputRadioConditionNew.disabled = false;
-		inputRadioConditionUsed.disabled = false;
-		inputRadioPaymentCard.disabled = false;
-		inputRadioPaymentCash.disabled = false;
-		inputRadioPaymentInvoice.disabled = false;
-		errorBrand.textContent = ``;
-		errorBrand.classList.remove('error__message');
-		selectBrandClass.classList.remove('error');
-		selectBrandClass.style.margin = "1.875rem 0";
-		const labelFlueDiesel = document.querySelector(`.label__diesel`);
-		labelFlueDiesel.style.color = "grey";
-		const labelFlueGas = document.querySelector(`.label__gas`);
-		labelFlueGas.style.color = "grey";
-		const labelElectricity = document.querySelector(`.label__electricity`);
-		labelElectricity.style.color = "grey";
-	}
-}
 
 // Корректировка выпадающего списка цвета кузова авто при выборе определенной модели
 selectModel.addEventListener(`change`, function (event) {
@@ -220,6 +158,76 @@ selectModel.addEventListener(`change`, function (event) {
 	}
 });
 
+
+// Расширенная валидация марки автомобиля (функция еще не вызывается)
+function checkFormValidityBrand() {
+	//(если поле пустое (марка не выбрана) - поля блокируются и появляется сообщения об ошибке)
+	if (selectBrand.value === "") {
+		selectModel.disabled = true;
+		selectColor.disabled = true;
+		inputRadioFluePetrol.disabled = true;
+		inputEngineCapacity.disabled = true;
+		inputRadioConditionNew.disabled = true;
+		inputRadioConditionUsed.disabled = true;
+		inputRadioPaymentCard.disabled = true;
+		inputRadioPaymentCash.disabled = true;
+		inputRadioPaymentInvoice.disabled = true;
+		errorBrand.textContent = `Выберите марку автомобиля`;
+		errorBrand.classList.add('error__message');
+		selectBrandClass.classList.add('error');
+		selectBrandClass.style.margin = "1.875rem 0 1rem 0";
+	} else {
+		//(если марка выбрана - сообщения об ошибке исчезают и часть полей будет разблокирована)
+		selectModel.disabled = false;
+		selectColor.disabled = false;
+		inputRadioFluePetrol.disabled = false;
+		inputEngineCapacity.disabled = false;
+		inputRadioConditionNew.disabled = false;
+		inputRadioConditionUsed.disabled = false;
+		inputRadioPaymentCard.disabled = false;
+		inputRadioPaymentCash.disabled = false;
+		inputRadioPaymentInvoice.disabled = false;
+		errorBrand.textContent = ``;
+		errorBrand.classList.remove('error__message');
+		selectBrandClass.classList.remove('error');
+		selectBrandClass.style.margin = "1.875rem 0";
+	}
+}
+
+// Расширенная валидация выбора модели авто (функция еще не вызывается)
+function checkFormValidityModel() {
+	//(если поле пустое - появляются сообщения об ошибке)
+	if (selectModel.value === "") {
+		errorModel.textContent = `Выберите модель`;
+		errorModel.classList.add('error__message');
+		selectModelClass.classList.add('error');
+		selectModelClass.style.margin = "1.875rem 0 1rem 0";
+	} else {
+		//(если модель выбрана - сообщения об ошибке исчезают)
+		errorModel.textContent = ``;
+		errorModel.classList.remove('error__message');
+		selectModelClass.classList.remove('error');
+		selectModelClass.style.margin = "1.875rem 0 1rem 0";
+	}
+}
+
+// Расширенная валидация цвета кузова авто (функция еще не вызывается)
+function checkFormValidityColor() {
+	//(если цвет не выбран - появляются сообщения об ошибке)
+	if (selectColor.value === "") {
+		errorColor.textContent = `Выберите цвет кузова`;
+		errorColor.classList.add('error__message');
+		selectColorClass.classList.add('error');
+		selectColorClass.style.margin = "1.875rem 0 1rem 0";
+	} else {
+		//(если цвет выбран - сообщения об ошибке исчезают)
+		errorColor.textContent = ``;
+		errorColor.classList.remove('error__message');
+		selectColorClass.classList.remove('error');
+		selectColorClass.style.margin = "1.875rem 0 1rem 0";
+	}
+}
+
 // Расширенная валидация объема двигателя (функция еще не вызывается)
 function checkFormValidityEngineCapacity() {
 	//(если поле пустое - появляются сообщения об ошибке)
@@ -242,6 +250,74 @@ function checkFormValidityEngineCapacity() {
 		inputEngineCapacityClass.style.margin = "1.875rem 0 1rem 0";
 	}
 }
+
+// Расширенная валидация состояния автомобиля (функция еще не вызывается)
+function checkFormValidityCondition() {
+	if (!inputRadioConditionNew.checked && !inputRadioConditionUsed.checked) {
+		//(если состояние автомобиля не выбрано - появляются сообщения об ошибке)
+		errorCondition.textContent = `Выберите состояние автомобиля`;
+		errorCondition.classList.add('error__message');
+		inputConditionClass.style.margin = "1.875rem 0 1rem 0";
+	} else {
+		//(если состояние выбрано - сообщения об ошибке исчезают)
+		errorCondition.textContent = ``;
+		errorCondition.classList.remove('error__message');
+		inputConditionClass.style.margin = "1.875rem 0 1rem 0";
+	}
+}
+
+// Расширенная валидация количества владельцев если нужен подержанный автомобиль(функция еще не вызывается)
+function checkFormValidityOwnersError() {
+	if (inputRadioConditionUsed.checked && !inputRadioCarOwner.checked || inputRadioConditionUsed.checked && !inputRadioCarOwners.checked) {
+		//(если ожидаемое количество владельцев не указано - появляются сообщения об ошибке)
+		errorOwners.textContent = `Необходимо выбрать количество владельцев`;
+		errorOwners.classList.add('error__message');
+		inputOwnersClass.style.margin = "1.875rem 0 1rem 0";
+	}
+}
+
+function checkFormValidityOwners() {
+	if (inputRadioConditionUsed.checked && inputRadioCarOwner.checked || inputRadioConditionUsed.checked && inputRadioCarOwners.checked) {
+		errorOwners.textContent = ``;
+		errorOwners.classList.remove('error__message');
+		inputOwnersClass.style.margin = "1.875rem 0 1rem 0";
+	}
+}
+
+// Расширенная валидация способа оплаты (функция еще не вызывается)
+function checkFormValidityPayment() {
+	if (!inputRadioConditionNew.checked && !inputRadioConditionUsed.checked && !inputRadioConditionUsed.checked) {
+		//(если способ оплаты не выбран - появляются сообщения об ошибке)
+		errorPayment.textContent = `Выберите состояние автомобиля`;
+		errorPayment.classList.add('error__message');
+		inputPaymentClass.style.margin = "1.875rem 0 1rem 0";
+	} else {
+		//(если способ оплаты выбран - сообщения об ошибке исчезают)
+		errorPayment.textContent = ``;
+		errorPayment.classList.remove('error__message');
+		inputPaymentClass.style.margin = "1.875rem 0 1rem 0";
+	}
+}
+
+
+// Если выбран подержанный автомобиль,
+//появляется выбор количества владельцев: 1-2 владельца, более 3-х владельцев
+inputRadioConditionUsed.addEventListener(`change`, function (event) {
+	if (inputRadioConditionUsed.checked) {
+		blockOwnersVisible.style.display = 'block';
+	}
+});
+
+// Если выбран новый автомобиль,
+//пункт выбора количества владельцев скрывается
+inputRadioConditionNew.addEventListener(`change`, function (event) {
+	if (inputRadioConditionNew.checked) {
+		inputRadioCarOwner.checked = false;
+		inputRadioCarOwners.checked = false;
+		blockOwnersVisible.style.display = 'none';
+	}
+});
+
 
 
 //Событие focus активируется, когда элемент формы получает фокус
@@ -410,8 +486,15 @@ const ownersValue = () => {
 // Проверка на валидность всех введенных данных пользователем
 //(событие change срабатывает при изменении значения элемента формы)
 mainForm.addEventListener(`change`, function (event) {
+	//вызываем функции валидации
 	checkFormValidityBrand();
+	checkFormValidityModel();
+	checkFormValidityColor();
 	checkFormValidityEngineCapacity();
+	checkFormValidityCondition();
+	checkFormValidityOwnersError();
+	checkFormValidityOwners();
+	checkFormValidityPayment();
 	calculateTotalPrice();
 
 	//добавление стилей для кнопки (кнопка станет активной, если нет сообщений об ошибках и значения полей ввода не пусты / отвечают заданным параметрам)
@@ -439,11 +522,18 @@ mainForm.addEventListener(`change`, function (event) {
 mainForm.addEventListener('submit', function (event) {
 	//предотвращаем перезагрузку страницы и автоматическую отправку данных
 	event.preventDefault();
-
+	//вызываем функции валидации
 	checkFormValidityBrand();
+	checkFormValidityModel();
+	checkFormValidityColor();
 	checkFormValidityEngineCapacity();
+	checkFormValidityCondition();
+	checkFormValidityOwnersError();
+	checkFormValidityOwners();
+	checkFormValidityPayment();
 	calculateTotalPrice();
 
+	//добавление стилей для кнопки (кнопка станет активной, если нет сообщений об ошибках и значения полей ввода не пусты / отвечают заданным параметрам)
 	if (document.querySelectorAll('.error__message').length === 0 &&
 		selectModel.value !== "" &&
 		selectColor.value !== "" &&
