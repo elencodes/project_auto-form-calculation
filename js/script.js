@@ -148,75 +148,75 @@ selectModel.addEventListener(`change`, function (event) {
 		selectColor.innerHTML =
 			`<select placeholder="Цвет кузова" name="colorCar" required>
 					<option value="" selected>Цвет кузова</option>
-					<option value="black">Черный</option>
-					<option value="white">Белый</option>
-					<option value="orange">Оранжевый</option>
-					<option value="green">Зеленый</option>`
+					<option value="Черный">Черный</option>
+					<option value="Белый">Белый</option>
+					<option value="Оранжевый">Оранжевый</option>
+					<option value="Зеленый">Зеленый</option>`
 	} else if (selectModel.value === `Kaptur`) {
 		selectColor.innerHTML =
 			`<select placeholder="Цвет кузова" name="colorCar" required>
 					<option value="" selected>Цвет кузова</option>
-					<option value="white">Белый</option>
-					<option value="orange">Оранжевый</option>
-					<option value="blue">Синий</option>`
+					<option value="Белый">Белый</option>
+					<option value="Оранжевый">Оранжевый</option>
+					<option value="Синий">Синий</option>`
 	} else if (selectModel.value === `Astra`) {
 		selectColor.innerHTML =
 			`<select placeholder="Цвет кузова" name="colorCar" required>
 					<option value="" selected>Цвет кузова</option>
-					<option value="grey">Серый</option>
-					<option value="red">Красный</option>`
+					<option value="Серый">Серый</option>
+					<option value="Красный">Красный</option>`
 	} else if (selectModel.value === `Corsa`) {
 		selectColor.innerHTML =
 			`<select placeholder="Цвет кузова" name="colorCar" required>
 					<option value="" selected>Цвет кузова</option>
-					<option value="red">Красный</option>
-					<option value="blue">Синий</option>
-					<option value="green">Зеленый</option>`
+					<option value="Красный">Красный</option>
+					<option value="Синий">Синий</option>
+					<option value="Зеленый">Зеленый</option>`
 	} else if (selectModel.value === `RX8`) {
 		selectColor.innerHTML =
 			`<select placeholder="Цвет кузова" name="colorCar" required>
 					<option value="" selected>Цвет кузова</option>
-					<option value="grey">Серый</option>
-					<option value="white">Белый</option>
-					<option value="red">Красный</option>
-					<option value="blue">Синий</option>`
+					<option value="Серый">Серый</option>
+					<option value="Белый">Белый</option>
+					<option value="Красный">Красный</option>
+					<option value="Синий">Синий</option>`
 	} else if (selectModel.value === `6`) {
 		selectColor.innerHTML =
 			`<select placeholder="Цвет кузова" name="colorCar" required>
 					<option value="" selected>Цвет кузова</option>
-					<option value="black">Черный</option>
-					<option value="white">Белый</option>
-					<option value="red">Красный</option>`
+					<option value="Черный">Черный</option>
+					<option value="Белый">Белый</option>
+					<option value="Красный">Красный</option>`
 	} else if (selectModel.value === `F-Type`) {
 		selectColor.innerHTML =
 			`<select placeholder="Цвет кузова" name="colorCar" required>
 					<option value="" selected>Цвет кузова</option>
-					<option value="grey">Серый</option>
-					<option value="white">Белый</option>
-					<option value="red">Красный</option>
-					<option value="orange">Оранжевый</option>
-					<option value="yellow">Желтый</option>`
+					<option value="Серый">Серый</option>
+					<option value="Белый">Белый</option>
+					<option value="Красный">Красный</option>
+					<option value="Оранжевый">Оранжевый</option>
+					<option value="Желтый">Желтый</option>`
 	} else if (selectModel.value === `F-Pace`) {
 		selectColor.innerHTML =
 			`<select placeholder="Цвет кузова" name="colorCar" required>
 					<option value="" selected>Цвет кузова</option>
-					<option value="grey">Серый</option>
-					<option value="white">Белый</option>
-					<option value="red">Красный</option>
-					<option value="orange">Оранжевый</option>
-					<option value="blue">Синий</option>`
+					<option value="Серый">Серый</option>
+					<option value="Белый">Белый</option>
+					<option value="Красный">Красный</option>
+					<option value="Оранжевый">Оранжевый</option>
+					<option value="Синий">Синий</option>`
 	} else {
 		selectColor.innerHTML =
 			`<select placeholder="Цвет кузова" name="colorCar" required>
 					<option value="" selected>Цвет кузова</option>
-					<option value="black">Черный</option>
-					<option value="grey">Серый</option>
-					<option value="white">Белый</option>
-					<option value="red">Красный</option>
-					<option value="orange">Оранжевый</option>
-					<option value="yellow">Желтый</option>
-					<option value="blue">Синий</option>
-					<option value="green">Зеленый</option>`
+					<option value="Черный">Черный</option>
+					<option value="Серый">Серый</option>
+					<option value="Белый">Белый</option>
+					<option value="Красный">Красный</option>
+					<option value="Оранжевый">Оранжевый</option>
+					<option value="Желтый">Желтый</option>
+					<option value="Синий">Синий</option>
+					<option value="Зеленый">Зеленый</option>`
 	}
 });
 
@@ -372,16 +372,38 @@ const calculateTotalPrice = (model, engineCapacity, conditionNew, conditionUsed)
 	const usedCarPriceOwners = 0.6;
 
 	let conditionPrice;
-	if (conditionUsed === 'usedCar' && inputRadioCarOwner.checked) {
+	if (conditionUsed === 'Новый' && inputRadioCarOwner.checked) {
 		conditionPrice = usedCarPriceOwner;
-	} else if (conditionUsed === 'usedCar' && inputRadioCarOwners.checked) {
+	} else if (conditionUsed === 'Подержанный' && inputRadioCarOwners.checked) {
 		conditionPrice = usedCarPriceOwners;
-	} else if (conditionNew === 'newCar') {
+	} else if (conditionNew === 'Новый') {
 		conditionPrice = newCarPrice;
 	}
 
-	//формула расчета стоимости автомобиля
+	//формула расчета стоимости автомобиля (модель*объем двигателя(л)*коэф. состояния авто (0-3 владельца))
 	return modelPrice * engineCapacityPrice * conditionPrice;
+};
+
+//Функция для дальнейшего вывода способа оплаты в консоль и на экран
+const paymentValue = () => {
+	if (inputRadioPaymentCard.checked) {
+		return inputRadioPaymentCard.value;
+	} else if (inputRadioPaymentCash.checked) {
+		return inputRadioPaymentCash.value
+	} else {
+		return inputRadioPaymentInvoice.value
+	}
+};
+
+//Функция для дальнейшего вывода количества владельцев в консоль и на экран
+const ownersValue = () => {
+	if (inputRadioCarOwner.checked) {
+		return inputRadioCarOwner.value;
+	} else if (inputRadioCarOwners.checked) {
+		return inputRadioCarOwners.value
+	} else {
+		return 'Новый';
+	}
 };
 
 
@@ -439,17 +461,27 @@ mainForm.addEventListener('submit', function (event) {
 			Color: selectColor.value,
 			Flue: inputRadioFluePetrol.value,
 			EngineCapacity: inputEngineCapacity.value,
-			Condition: inputRadioConditionNew.value || inputRadioCarOwner.value || inputRadioCarOwners.value,
-			Payment: inputRadioPaymentCard.value || inputRadioPaymentCash.value || inputRadioPaymentInvoice.value,
+			Condition: inputRadioConditionNew.checked ? 'Новый' : 'Подержанный',
+			Owners: ownersValue(),
+			Payment: paymentValue(),
 		});
 		//выводим на экран сумму конфигурации автомобиля
+		const result = document.querySelector(`.result`);
+		result.innerHTML = `
+      <p>Марка автомобиля: <span>${selectBrand.value}</span></p>
+      <p>Модель: <span>${selectModel.value}</span></p>
+      <p>Цвет кузова: <span>${selectColor.value}</span></p>
+      <p>Тип топлива: <span>${inputRadioFluePetrol.value}</span></p>
+      <p>Объем двигателя: <span>${inputEngineCapacity.value}л</span></p>
+      <p>Состояние автомобиля: <span>${ownersValue()}</span></p>
+      <p>Cпособ оплаты: <span>${paymentValue()}</span></p>`
 		const price = document.querySelector(`.price`);
 		const format = new Intl.NumberFormat("ru-RU", {
 			style: "currency",
 			currency: "RUB"
 		}).format(calculateTotalPrice(), );
 		price.innerHTML = `
-			<p>Стоимость автомобиля в данной конфигурации составит ${format}</p>`
+			<p>Стоимость автомобиля в данной конфигурации составит <span>${format}</span></p>`
 		//очищаем форму
 		mainForm.reset();
 		//возврат стилей кнопки к исходному состоянию
