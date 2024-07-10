@@ -279,11 +279,18 @@ function checkFormValidityOwnersError() {
 }
 
 function checkFormValidityOwners() {
+	//(если ожидаемое количество владельцев указано - сообщение об ошибке исчезают)
 	if (inputRadioConditionUsed.checked && inputRadioCarOwner.checked || inputRadioConditionUsed.checked && inputRadioCarOwners.checked) {
 		errorOwners.textContent = ``;
 		errorOwners.classList.remove('error__message');
 		inputOwnersClass.style.margin = "1.875rem 0 1rem 0";
 	}
+}
+
+// Объединение функций валидации для выбора количества владельцев 
+function checkFormValidityForOwners() {
+	checkFormValidityOwnersError();
+	checkFormValidityOwners();
 }
 
 // Расширенная валидация способа оплаты (функция еще не вызывается)
@@ -300,6 +307,68 @@ function checkFormValidityPayment() {
 		inputPaymentClass.style.margin = "1.875rem 0 1rem 0";
 	}
 }
+
+
+//Проверка на валидность марки автомобиля
+//(событие change срабатывает при изменении значения элемента формы (выборе варианта из выпадающего списка))
+selectBrand.addEventListener(`change`, checkFormValidityBrand);
+//Событие focus активируется, когда элемент формы получает фокус
+//добавляем класс focus для поля ввода
+selectBrand.addEventListener(`focus`, function (event) {
+	selectBrandClass.classList.add('focus');
+});
+//Событие blur срабатывает, когда элемент теряет фокус
+//возврат стилей к исходному состоянию
+selectBrand.addEventListener(`blur`, function (event) {
+	selectBrandClass.classList.remove('focus');
+});
+
+
+//Проверка на валидность модели автомобиля
+//(событие change срабатывает при изменении значения элемента формы (выборе варианта из выпадающего списка))
+selectModel.addEventListener(`change`, checkFormValidityModel);
+//Событие focus активируется, когда элемент формы получает фокус
+//добавляем класс focus для поля ввода
+selectModel.addEventListener(`focus`, function (event) {
+	selectModelClass.classList.add('focus');
+});
+//Событие blur срабатывает, когда элемент теряет фокус
+//возврат стилей к исходному состоянию
+selectModel.addEventListener(`blur`, function (event) {
+	selectModelClass.classList.remove('focus');
+});
+
+
+//Проверка на валидность цвета автомобиля
+//(событие change срабатывает при изменении значения элемента формы (выборе варианта из выпадающего списка))
+selectColor.addEventListener(`change`, checkFormValidityColor);
+// Событие focus активируется, когда элемент формы получает фокус
+//добавляем класс focus для поля ввода
+selectColor.addEventListener(`focus`, function (event) {
+	selectColorClass.classList.add('focus');
+});
+//Событие blur срабатывает, когда элемент теряет фокус
+//возврат стилей к исходному состоянию
+selectColor.addEventListener(`blur`, function (event) {
+	selectColorClass.classList.remove('focus');
+});
+
+
+//Проверка на валидность введенного значения объема двигателя
+//(событие input срабатывает при вводе или удалении каждого символа)
+inputEngineCapacity.addEventListener(`input`, checkFormValidityEngineCapacity);
+// Событие focus активируется, когда элемент формы получает фокус
+//очищаем placeholder и добавляем класс focus для поля ввода
+inputEngineCapacity.addEventListener(`focus`, function (event) {
+	inputEngineCapacity.placeholder = "";
+	inputEngineCapacityClass.classList.add('focus');
+});
+// Событие blur срабатывает, когда элемент теряет фокус
+//возврат стилей к исходному состоянию
+inputEngineCapacity.addEventListener(`blur`, function (event) {
+	inputEngineCapacity.placeholder = inputEngineCapacityPlaceholder;
+	inputEngineCapacityClass.classList.remove('focus');
+});
 
 
 // Если выбран подержанный автомобиль,
@@ -320,53 +389,16 @@ inputRadioConditionNew.addEventListener(`change`, function (event) {
 	}
 });
 
+// Проверка на валидность выбранного количества владельцев пользователем
+//(событие change срабатывает при изменении значения элемента формы (переключении радиокнопок))
+inputRadioCarOwner.addEventListener(`change`, checkFormValidityForOwners);
+inputRadioCarOwners.addEventListener(`change`, checkFormValidityForOwners);
 
-
-//Событие focus активируется, когда элемент формы получает фокус
-//добавляем класс focus для поля ввода
-selectBrand.addEventListener(`focus`, function (event) {
-	selectBrandClass.classList.add('focus');
-});
-//Событие blur срабатывает, когда элемент теряет фокус
-//возврат стилей к исходному состоянию
-selectBrand.addEventListener(`blur`, function (event) {
-	selectBrandClass.classList.remove('focus');
-});
-
-//Событие focus активируется, когда элемент формы получает фокус
-//добавляем класс focus для поля ввода
-selectModel.addEventListener(`focus`, function (event) {
-	selectModelClass.classList.add('focus');
-});
-//Событие blur срабатывает, когда элемент теряет фокус
-//возврат стилей к исходному состоянию
-selectModel.addEventListener(`blur`, function (event) {
-	selectModelClass.classList.remove('focus');
-});
-
-// Событие focus активируется, когда элемент формы получает фокус
-//добавляем класс focus для поля ввода
-selectColor.addEventListener(`focus`, function (event) {
-	selectColorClass.classList.add('focus');
-});
-//Событие blur срабатывает, когда элемент теряет фокус
-//возврат стилей к исходному состоянию
-selectColor.addEventListener(`blur`, function (event) {
-	selectColorClass.classList.remove('focus');
-});
-
-// Событие focus активируется, когда элемент формы получает фокус
-//очищаем placeholder и добавляем класс focus для поля ввода
-inputEngineCapacity.addEventListener(`focus`, function (event) {
-	inputEngineCapacity.placeholder = "";
-	inputEngineCapacityClass.classList.add('focus');
-});
-// Событие blur срабатывает, когда элемент теряет фокус
-//возврат стилей к исходному состоянию
-inputEngineCapacity.addEventListener(`blur`, function (event) {
-	inputEngineCapacity.placeholder = inputEngineCapacityPlaceholder;
-	inputEngineCapacityClass.classList.remove('focus');
-});
+// Проверка на валидность выбранного способа оплаты пользователем
+//(событие change срабатывает при изменении значения элемента формы (переключении радиокнопок))
+inputRadioPaymentCard.addEventListener(`change`, checkFormValidityPayment);
+inputRadioPaymentCash.addEventListener(`change`, checkFormValidityPayment);
+inputRadioPaymentInvoice.addEventListener(`change`, checkFormValidityPayment);
 
 
 // Создаем массив с объектами, который содержит в себе цены для каждой новой модели авто
@@ -561,17 +593,6 @@ const imageModelColorCar = () => {
 // Проверка на валидность всех введенных данных пользователем
 //(событие change срабатывает при изменении значения элемента формы)
 mainForm.addEventListener(`change`, function (event) {
-	//вызываем функции валидации
-	checkFormValidityBrand();
-	checkFormValidityModel();
-	checkFormValidityColor();
-	checkFormValidityEngineCapacity();
-	checkFormValidityCondition();
-	checkFormValidityOwnersError();
-	checkFormValidityOwners();
-	checkFormValidityPayment();
-	calculateTotalPrice();
-
 	//добавление стилей для кнопки (кнопка станет активной, если нет сообщений об ошибках и значения полей ввода не пусты / отвечают заданным параметрам)
 	if (document.querySelectorAll('.error__message').length === 0 &&
 		selectModel.value !== "" &&
@@ -603,8 +624,7 @@ mainForm.addEventListener('submit', function (event) {
 	checkFormValidityColor();
 	checkFormValidityEngineCapacity();
 	checkFormValidityCondition();
-	checkFormValidityOwnersError();
-	checkFormValidityOwners();
+	checkFormValidityForOwners();
 	checkFormValidityPayment();
 	calculateTotalPrice();
 	imageModelColorCar();
