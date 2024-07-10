@@ -37,6 +37,8 @@ const inputEngineCapacityClass = document.querySelector(`.input__box-engine--cap
 const inputConditionClass = document.querySelector(`.input__box-radio--condition`);
 const inputOwnersClass = document.querySelector(`.input__box-radio--owners`);
 const inputPaymentClass = document.querySelector(`.input__box-radio-payment`);
+const result = document.querySelector(`.result`);
+const price = document.querySelector(`.price`);
 
 
 // Корректировка выпадающего списка моделей авто при выборе определенной марки
@@ -288,7 +290,7 @@ function checkFormValidityOwners() {
 function checkFormValidityPayment() {
 	if (!inputRadioConditionNew.checked && !inputRadioConditionUsed.checked && !inputRadioConditionUsed.checked) {
 		//(если способ оплаты не выбран - появляются сообщения об ошибке)
-		errorPayment.textContent = `Выберите состояние автомобиля`;
+		errorPayment.textContent = `Выберите способ оплаты`;
 		errorPayment.classList.add('error__message');
 		inputPaymentClass.style.margin = "1.875rem 0 1rem 0";
 	} else {
@@ -482,6 +484,79 @@ const ownersValue = () => {
 	}
 };
 
+// Функция для дальнейшего вывода фото автомобиля
+const imageModelColorCar = () => {
+	const blockForImage = document.querySelector(`.image__block`);
+	const imageCar = document.createElement(`img`);
+	imageCar.style.display = "block"
+	imageCar.style.margin = "2rem auto 3rem auto"
+	imageCar.style.width = "60%"
+	imageCar.style.objectFit = "cover"
+	imageCar.style.border = ".125rem solid #333333"
+	imageCar.style.borderRadius = "1.25rem"
+	if (selectModel.value === "Duster" && selectColor.value === "Черный") {
+		imageCar.src = "assets/images/Renault Duster/Renault_Duster_black.jpeg";
+	} else if (selectModel.value === "Duster" && selectColor.value === "Белый") {
+		imageCar.src = "assets/images/Renault Duster/Renault_Duster_white.jpeg";
+	} else if (selectModel.value === "Duster" && selectColor.value === "Оранжевый") {
+		imageCar.src = "assets/images/Renault Duster/Renault_Duster_orange.jpeg";
+	} else if (selectModel.value === "Duster" && selectColor.value === "Зеленый") {
+		imageCar.src = "assets/images/Renault Duster/Renault_Duster_green.jpeg";
+	} else if (selectModel.value === "Kaptur" && selectColor.value === "Белый") {
+		imageCar.src = "assets/images/Renault Kaptur/Renault_Kaptur_white.jpeg";
+	} else if (selectModel.value === "Kaptur" && selectColor.value === "Оранжевый") {
+		imageCar.src = "assets/images/Renault Kaptur/Renault_Kaptur_orange.jpeg";
+	} else if (selectModel.value === "Kaptur" && selectColor.value === "Синий") {
+		imageCar.src = "assets/images/Renault Kaptur/Renault_Kaptur_orange.jpeg";
+	} else if (selectModel.value === "Astra" && selectColor.value === "Серый") {
+		imageCar.src = "assets/images/Opel Astra/Opel_Astra_grey.jpeg";
+	} else if (selectModel.value === "Astra" && selectColor.value === "Красный") {
+		imageCar.src = "assets/images/Opel Astra/Opel_Astra_red.jpeg";
+	} else if (selectModel.value === "Corsa" && selectColor.value === "Красный") {
+		imageCar.src = "assets/images/Opel Corsa/Opel_Corsa_red.jpeg";
+	} else if (selectModel.value === "Corsa" && selectColor.value === "Синий") {
+		imageCar.src = "assets/images/Opel Corsa/Opel_Corsa_blue.jpeg";
+	} else if (selectModel.value === "Corsa" && selectColor.value === "Зеленый") {
+		imageCar.src = "assets/images/Opel Corsa/Opel_Corsa_green.jpeg";
+	} else if (selectModel.value === "RX8" && selectColor.value === "Серый") {
+		imageCar.src = "assets/images/Mazda RX-8/Mazda_RX-8_grey.jpg";
+	} else if (selectModel.value === "RX8" && selectColor.value === "Белый") {
+		imageCar.src = "assets/images/Mazda RX-8/Mazda_RX-8_white.jpg";
+	} else if (selectModel.value === "RX8" && selectColor.value === "Красный") {
+		imageCar.src = "assets/images/Mazda RX-8/Mazda_RX-8_red.jpg";
+	} else if (selectModel.value === "RX8" && selectColor.value === "Синий") {
+		imageCar.src = "assets/images/Mazda RX-8/Mazda_RX-8_blue.jpg";
+	} else if (selectModel.value === "6" && selectColor.value === "Черный") {
+		imageCar.src = "assets/images/Mazda 6/mazda6_black.jpg";
+	} else if (selectModel.value === "6" && selectColor.value === "Белый") {
+		imageCar.src = "assets/images/Mazda 6/mazda6_white.jpg";
+	} else if (selectModel.value === "6" && selectColor.value === "Красный") {
+		imageCar.src = "assets/images/Mazda 6/mazda6_red.jpg";
+	} else if (selectModel.value === "F-Type" && selectColor.value === "Серый") {
+		imageCar.src = "assets/images/Jaguar F-Type/jaguar_f-type_grey.jpg";
+	} else if (selectModel.value === "F-Type" && selectColor.value === "Белый") {
+		imageCar.src = "assets/images/Jaguar F-Type/jaguar_f-type_white.jpg";
+	} else if (selectModel.value === "F-Type" && selectColor.value === "Красный") {
+		imageCar.src = "assets/images/Jaguar F-Type/jaguar_f-type_red.jpg";
+	} else if (selectModel.value === "F-Type" && selectColor.value === "Оранжевый") {
+		imageCar.src = "assets/images/Jaguar F-Type/jaguar_f-type_orange.jpg";
+	} else if (selectModel.value === "F-Type" && selectColor.value === "Желтый") {
+		imageCar.src = "assets/images/Jaguar F-Type/jaguar_f-type_yellow.jpg";
+	} else if (selectModel.value === "F-Pace" && selectColor.value === "Серый") {
+		imageCar.src = "assets/images/Jaguar F-Pace/jaguar_f-pace_grey.jpg";
+	} else if (selectModel.value === "F-Pace" && selectColor.value === "Белый") {
+		imageCar.src = "assets/images/Jaguar F-Pace/jaguar_f-pace_white.jpg";
+	} else if (selectModel.value === "F-Pace" && selectColor.value === "Красный") {
+		imageCar.src = "assets/images/Jaguar F-Pace/jaguar_f-pace_red.jpg";
+	} else if (selectModel.value === "F-Pace" && selectColor.value === "Оранжевый") {
+		imageCar.src = "assets/images/Jaguar F-Pace/jaguar_f-pace_orange.jpg";
+	} else if (selectModel.value === "F-Pace" && selectColor.value === "Синий") {
+		imageCar.src = "assets/images/Jaguar F-Pace/jaguar_f-pace_blue.jpg";
+	}
+
+	blockForImage.appendChild(imageCar)
+};
+
 
 // Проверка на валидность всех введенных данных пользователем
 //(событие change срабатывает при изменении значения элемента формы)
@@ -532,6 +607,7 @@ mainForm.addEventListener('submit', function (event) {
 	checkFormValidityOwners();
 	checkFormValidityPayment();
 	calculateTotalPrice();
+	imageModelColorCar();
 
 	//добавление стилей для кнопки (кнопка станет активной, если нет сообщений об ошибках и значения полей ввода не пусты / отвечают заданным параметрам)
 	if (document.querySelectorAll('.error__message').length === 0 &&
@@ -555,8 +631,7 @@ mainForm.addEventListener('submit', function (event) {
 			Owners: ownersValue(),
 			Payment: paymentValue(),
 		});
-		//выводим на экран сумму конфигурации автомобиля
-		const result = document.querySelector(`.result`);
+		//выводим на экран конфигурацию автомобиля (объект DOM .result)
 		result.innerHTML = `
       <p>Марка автомобиля: <span>${selectBrand.value}</span></p>
       <p>Модель: <span>${selectModel.value}</span></p>
@@ -565,7 +640,7 @@ mainForm.addEventListener('submit', function (event) {
       <p>Объем двигателя: <span>${inputEngineCapacity.value}л</span></p>
       <p>Состояние автомобиля: <span>${ownersValue()}</span></p>
       <p>Cпособ оплаты: <span>${paymentValue()}</span></p>`
-		const price = document.querySelector(`.price`);
+		//выводим на экран сумму автомобиля (объект DOM .price)
 		const format = new Intl.NumberFormat("ru-RU", {
 			style: "currency",
 			currency: "RUB"
