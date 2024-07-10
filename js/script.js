@@ -539,7 +539,7 @@ const imageModelColorCar = () => {
 	} else if (selectModel.value === "Kaptur" && selectColor.value === "Оранжевый") {
 		imageCar.src = "assets/images/Renault Kaptur/Renault_Kaptur_orange.jpeg";
 	} else if (selectModel.value === "Kaptur" && selectColor.value === "Синий") {
-		imageCar.src = "assets/images/Renault Kaptur/Renault_Kaptur_orange.jpeg";
+		imageCar.src = "assets/images/Renault Kaptur/Renault_Kaptur_blue.jpeg";
 	} else if (selectModel.value === "Astra" && selectColor.value === "Серый") {
 		imageCar.src = "assets/images/Opel Astra/Opel_Astra_grey.jpeg";
 	} else if (selectModel.value === "Astra" && selectColor.value === "Красный") {
