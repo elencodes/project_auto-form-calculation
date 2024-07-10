@@ -448,7 +448,7 @@ const calculateTotalPrice = (model, engineCapacity, conditionNew, conditionUsed)
 	const usedCarPriceOwners = 0.6;
 
 	let conditionPrice;
-	if (conditionUsed === 'Новый' && inputRadioCarOwner.checked) {
+	if (conditionUsed === 'Подержанный' && inputRadioCarOwner.checked) {
 		conditionPrice = usedCarPriceOwner;
 	} else if (conditionUsed === 'Подержанный' && inputRadioCarOwners.checked) {
 		conditionPrice = usedCarPriceOwners;
