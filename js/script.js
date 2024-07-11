@@ -32,6 +32,7 @@ const errorPayment = document.querySelector(`.error__payment`);
 const selectBrandClass = document.querySelector(`.input__box-brand`);
 const selectModelClass = document.querySelector(`.input__box-model`);
 const selectColorClass = document.querySelector(`.input__box-color`);
+const selectFocusBlurEvent = document.querySelectorAll(`.select`);
 const inputFlueClass = document.querySelector(`.input__box-radio--flue`);
 const inputEngineCapacityClass = document.querySelector(`.input__box-engine--capacity`);
 const inputConditionClass = document.querySelector(`.input__box-radio--condition`);
@@ -312,45 +313,28 @@ function checkFormValidityPayment() {
 //Проверка на валидность марки автомобиля
 //(событие change срабатывает при изменении значения элемента формы (выборе варианта из выпадающего списка))
 selectBrand.addEventListener(`change`, checkFormValidityBrand);
-//Событие focus активируется, когда элемент формы получает фокус
-//добавляем класс focus для поля ввода
-selectBrand.addEventListener(`focus`, function (event) {
-	selectBrandClass.classList.add('focus');
-});
-//Событие blur срабатывает, когда элемент теряет фокус
-//возврат стилей к исходному состоянию
-selectBrand.addEventListener(`blur`, function (event) {
-	selectBrandClass.classList.remove('focus');
-});
-
 
 //Проверка на валидность модели автомобиля
 //(событие change срабатывает при изменении значения элемента формы (выборе варианта из выпадающего списка))
 selectModel.addEventListener(`change`, checkFormValidityModel);
-//Событие focus активируется, когда элемент формы получает фокус
-//добавляем класс focus для поля ввода
-selectModel.addEventListener(`focus`, function (event) {
-	selectModelClass.classList.add('focus');
-});
-//Событие blur срабатывает, когда элемент теряет фокус
-//возврат стилей к исходному состоянию
-selectModel.addEventListener(`blur`, function (event) {
-	selectModelClass.classList.remove('focus');
-});
-
 
 //Проверка на валидность цвета автомобиля
 //(событие change срабатывает при изменении значения элемента формы (выборе варианта из выпадающего списка))
 selectColor.addEventListener(`change`, checkFormValidityColor);
-// Событие focus активируется, когда элемент формы получает фокус
-//добавляем класс focus для поля ввода
-selectColor.addEventListener(`focus`, function (event) {
-	selectColorClass.classList.add('focus');
-});
-//Событие blur срабатывает, когда элемент теряет фокус
-//возврат стилей к исходному состоянию
-selectColor.addEventListener(`blur`, function (event) {
-	selectColorClass.classList.remove('focus');
+
+
+//Добавляем через метод перебора массива стиль при фокусировке выпадающего списка / потере фокуса
+selectFocusBlurEvent.forEach(function (select) {
+	// Событие focus активируется, когда элемент формы получает фокус
+	//добавляем класс focus для поля ввода
+	select.addEventListener(`focus`, function () {
+		select.style.border = ".125rem solid #7de2f1";
+	})
+	// Событие blur срабатывает, когда элемент теряет фокус
+	//возврат стилей к исходному состоянию
+	select.addEventListener(`blur`, function () {
+		select.style.border = "";
+	});
 });
 
 
