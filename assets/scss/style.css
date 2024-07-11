@@ -396,6 +396,11 @@ body {
   color: grey;
 }
 
+.focus {
+  border: 0.125rem solid #7de2f1;
+  border-radius: 2.5rem;
+}
+
 .error__message {
   color: rgb(238, 34, 34);
 }
